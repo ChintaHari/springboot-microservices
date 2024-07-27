@@ -30,6 +30,11 @@ This project demonstrates a microservices architecture using Spring Boot, integr
 - **RestTemplate**: For RESTful communication between microservices.
 - **Maven**: Dependency management and project build tool.
 
+## Architecture
+
+![Architecture Diagram](images/architecture.jpg)
+
+
 # Project Setup and Local Development
 
 1. **Clone the Repository**:
