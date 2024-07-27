@@ -35,8 +35,8 @@ This project demonstrates a microservices architecture using Spring Boot, integr
 1. **Clone the Repository**:
 
     ```bash
-    git clone [your-repository-url]
-    cd [repository-name]
+    git clone git@github.com:ChintaHari/springboot-microservices.git
+    cd springboot-microservices
     ```
 2. **Start the Eureka Service Registry**:
     Navigate to the Eureka Service Registry directory and run:
