@@ -32,7 +32,7 @@ This project demonstrates a microservices architecture using Spring Boot, integr
 
 ## Architecture
 
-![Architecture Diagram](images/architecture.jpg)
+![Architecture Diagram](images/Architecture.jpg)
 
 
 # Project Setup and Local Development
