@@ -26,9 +26,12 @@ public class OrderService {
         payment.setOrderId(order.getId());
         payment.setAmount(order.getPrice());
 
+        System.out.println("Order-Service calling payment-service/request for payment");
+
         Payment paymentResponse = restTemplate
                                         .postForObject(
                                         "http://PAYMENT-SERVICE/payment/doPayment",
+                                        // "http://localhost:9191/payment/doPayment",
                                              payment,
                                 Payment.class);
 
@@ -40,6 +43,16 @@ public class OrderService {
                 .amount(paymentResponse.getAmount())
                 .transactionId(paymentResponse.getTransactionId())
                 .message(response)
+                .build();
+    }
+
+    public TransactionResponse getOrder(int orderId) {
+        Order order = orderRepository.findById(orderId).get();
+        return TransactionResponse.builder()
+                .order(order)
+                .amount(order.getPrice())
+                .transactionId("")
+                .message("Order found in Order-Service")
                 .build();
     }
     
