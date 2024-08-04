@@ -1,6 +1,10 @@
 package com.example.payment_service.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +24,11 @@ public class PaymentController {
     public Payment doPayment(@RequestBody Payment payment) {
         System.out.println("Inside doPayment of PaymentController");
         return paymentService.doPayment(payment);
+    }
+
+    @GetMapping("/getPaymentByOrderId/{orderId}")
+    public Optional<Payment> getPaymentByOrderId(@PathVariable int orderId) {
+        return paymentService.getPaymentByOrderId(orderId);
     }
     
 }
