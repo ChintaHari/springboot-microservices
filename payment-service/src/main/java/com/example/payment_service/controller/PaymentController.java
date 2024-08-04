@@ -18,6 +18,7 @@ public class PaymentController {
 
     @PostMapping("/doPayment")
     public Payment doPayment(@RequestBody Payment payment) {
+        System.out.println("Inside doPayment of PaymentController");
         return paymentService.doPayment(payment);
     }
     
