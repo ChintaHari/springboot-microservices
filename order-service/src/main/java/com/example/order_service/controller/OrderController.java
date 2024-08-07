@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.order_service.common.TransactionRequest;
 import com.example.order_service.common.TransactionResponse;
 import com.example.order_service.service.OrderService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RestController
 @RequestMapping("/order")
@@ -20,7 +21,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/bookOrder")
-    public TransactionResponse bookOrder(@RequestBody TransactionRequest transactionRequest) {
+    public TransactionResponse bookOrder(@RequestBody TransactionRequest transactionRequest) throws JsonProcessingException {
         return orderService.saveOrder(transactionRequest);
     }
     
