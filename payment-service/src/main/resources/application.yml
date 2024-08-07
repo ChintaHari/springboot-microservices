@@ -7,3 +7,8 @@ spring:
             enabled: true
     application:
         name: PAYMENT-SERVICE
+
+logging:
+    file:
+        name: C:/Users/hkhar/Desktop/logs/microservice.log
+
