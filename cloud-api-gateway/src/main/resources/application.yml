@@ -8,6 +8,8 @@ spring:
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/order/**
+          filters:
+            - AuthenticationFilter
           # filters:
           #   - name: CircuitBreaker
           #     args:
@@ -17,11 +19,17 @@ spring:
           uri: lb://PAYMENT-SERVICE
           predicates:
             - Path=/payment/**
+          filters:
+            - AuthenticationFilter
           # filters:
           #   - name: CircuitBreaker
           #     args:
           #       name: payment-service
           #       fallbackuri: forward:/paymentFallback
+        - id: security-service
+          uri: lb://SECURITY-SERVICE
+          predicates:
+            - Path=/auth/**
                 
 
 server:
