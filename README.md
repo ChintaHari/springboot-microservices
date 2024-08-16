@@ -8,7 +8,7 @@ This project demonstrates a microservices architecture using Spring Boot, integr
 
 - [Order Service](./order-service/README.md)
 - [Payment Service](./payment-service/README.md)
-- [Eureka Service Registry](./eureka-service/README.md)
+- [Eureka Service Registry](./service-registry/README.md)
 - [Cloud API Gateway](./cloud-api-gateway/README.md)
 - [Cloud Config Server](./cloud-config-server/README.md)
 - [Security Service](./security-service/README.md)
