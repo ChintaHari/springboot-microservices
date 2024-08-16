@@ -1,14 +1,38 @@
-# Microservices Architecture with Spring Boot and Eureka
+# Microservices Architecture with Spring Boot
 
 ## Project Overview
 
-This project demonstrates a microservices architecture using Spring Boot, integrating three main components: Order Service, Payment Service, and a Eureka Service Registry. The architecture allows for robust service discovery, registration, and a decoupled mechanism for order processing and payment management in a cloud-native environment.
+This project demonstrates a microservices architecture using Spring Boot, integrating multiple components to create a robust and scalable system. The architecture includes various services for comprehensive service management, configuration, and security, as well as centralized logging for enhanced observability.
 
 ## Features
 
-- **Order Service**: Manages order processing, integrates with Payment Service to handle payments.
-- **Payment Service**: Handles payment transactions, simulates payment processing with a random success or failure response.
-- **Eureka Service Registry**: Central service registry that enables service discovery and integration among microservices.
+- **Order Service**: 
+  - Manages order processing.
+  - Integrates with Payment Service to handle payments.
+
+- **Payment Service**: 
+  - Handles payment transactions.
+  - Simulates payment processing with random success or failure responses.
+
+- **Eureka Service Registry**: 
+  - Central service registry for service discovery and registration.
+
+- **Cloud API Gateway**: 
+  - Routes incoming requests to appropriate microservices.
+  - Manages API traffic and load balancing.
+
+- **Cloud Config Server**: 
+  - Fetches and serves common configuration properties from a Git repository.
+  - Provides centralized configuration management.
+
+- **Security Service**: 
+  - Implements authentication and authorization using Spring Security 6.
+  - Secures microservice interactions.
+
+- **Centralized Logging**: 
+  - Configured with the ELK stack (Elasticsearch, Logstash, Kibana).
+  - Provides real-time log aggregation, search, and visualization.
+
 
 ## Pre-requisites
 
@@ -92,4 +116,15 @@ Use the JDBC URL as configured in your `application.properties`.
 ## Testing the Application
 
 To test the integration and functionality, you can use Postman or any other API testing tool to send requests to the endpoints listed above.
+
+## Microservices Documentation
+
+- [Order Service](./order-service/README.md)
+- [Payment Service](./payment-service/README.md)
+- [Eureka Service Registry](./eureka-service/README.md)
+- [Cloud API Gateway](./cloud-api-gateway/README.md)
+- [Cloud Config Server](./cloud-config-server/README.md)
+- [Security Service](./security-service/README.md)
+- [Centralized Logging](./centralized-logging/README.md)
+
 
