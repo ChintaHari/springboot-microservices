@@ -1,74 +1,86 @@
-# Service Registry Microservice
+# Security Service Microservice Documentation
 
 ## Overview
-The **Service Registry** microservice is responsible for maintaining a central registry of microservices within a distributed system. It uses Netflix Eureka to allow microservices to register themselves and discover other registered services, enabling dynamic scaling and resilience in the architecture.
 
-This microservice acts as a Eureka Server, which manages service instances and provides information to clients about the available services.
+The Security Service is a comprehensive microservice designed to handle authentication and authorization tasks within a microservices architecture. Leveraging Spring Boot 3+, Spring Security 6+, JDK 17, and Maven 3.9+, this service provides robust security features like user registration, authentication via JWT tokens, and token refresh mechanisms.
+
+## System Architecture Diagrams
+
+Below are the architectural diagrams depicting various aspects of the Security Service:
+
+### Authentication and Authorization Workflow
+
+#### Diagram 1: User Registration and Authentication Flow
+![User Registration and Authentication Flow](images/ApplicationArchitecture.png)
+
+This diagram illustrates the process from user registration to obtaining an authentication token.
+
+#### Diagram 2: User Authentication and Token Generation
+![User Authentication and Token Generation](images/SignUp.png)
+
+Details the token generation process upon user authentication.
+
+#### Diagram 3: Token Validation and Access Control
+![Token Validation and Access Control](images/SignIn.png)
+
+Shows the steps involved in validating JWT tokens and granting access to protected resources.
+
+#### Diagram 4: Error Handling in Authentication
+![Error Handling in Authentication](images/ResourceAccess.png)
+
+Explains the flow when authentication fails due to various reasons like bad credentials or expired tokens.
 
 ## Dependencies
 
-The following dependencies are required to build and run the Service Registry microservice:
+The project uses several key dependencies:
 
-```xml
-<dependencies>
-    <!-- Netflix Eureka Server -->
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-    </dependency>
+- **`Spring Boot Starter Security`** - Provides essential security configurations.
+- **`Spring Boot Starter Web`** - Supports building web applications including RESTful applications using Spring MVC.
+- **`Spring Cloud Starter Netflix Eureka Client`** - Enables service discovery with Eureka.
+- **`JJWT`** (JSON Web Token) for secure and efficient JWT handling.
 
-    <!-- Spring Boot Testing -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-test</artifactId>
-        <scope>test</scope>
-    </dependency>
-    
-    <!-- Spring Boot Actuator for Monitoring -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-</dependencies>
-```
+  ## Configuration Files
 
-## Configuration
+### Application Properties
 
-1. `application.yml`
-
-This file contains the essential configuration for the Eureka Server, including the port and Eureka-specific properties:
-
-```yaml
-eureka:
-    client:
-        register-with-eureka: false
-        fetch-registry: false
-
-server:
-    port: 8761
-```
-
-2. `bootstrap.yml`
-
-This file is used for externalized configuration and integrates the service registry with a Spring Cloud Config server:
+`application.yml` configuration:
 
 ```yaml
 spring:
-    cloud:
-        config:
-            uri: http://localhost:9196
+  application:
+    name: security-service
+server:
+  port: 8089
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/microservices
+    username: springstudent
+    password: springstudent
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
 ```
 
-## Main Application Class
+## API Endpoints
 
-The main application class initializes the Eureka Server. The `@EnableEurekaServer` annotation is used to activate the Eureka Server functionality.
+### Authentication Endpoints
 
-```java
-@SpringBootApplication
-@EnableEurekaServer
-public class ServiceRegistryApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(ServiceRegistryApplication.class, args);
-    }
-}
-```
+- **POST `/auth/register`** - Register a new user.
+- **GET `/auth/getToken`** - Generate a new JWT for authenticated users.
+- **GET `/auth/validateToken`** - Validate an existing JWT.
+- **GET `/auth/refreshToken`** - Refresh an expired JWT.
+
+
+
+
