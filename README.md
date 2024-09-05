@@ -184,6 +184,6 @@ Tokens must be refreshed within their valid time frames; JWT tokens are valid fo
 ## Logging
 Once your services are running, you can monitor and view centralized logs in Kibana. Here's an example of how logs appear in the Kibana dashboard:
 
-
+![Logging](images/6.%20Logging.png)
 
 
