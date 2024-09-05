@@ -1,6 +1,7 @@
 package com.example.security_service.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties.Lettuce.Cluster.Refresh;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.security_service.entity.AuthRequest;
+import com.example.security_service.dto.AuthRequest;
+import com.example.security_service.dto.JwtResponse;
+import com.example.security_service.dto.RefreshTokenRequest;
 import com.example.security_service.entity.User;
 import com.example.security_service.service.AuthService;
 
@@ -26,7 +29,7 @@ public class AuthController {
     }
 
     @GetMapping("/getToken")
-    public String getToken(@RequestBody AuthRequest authRequest) {
+    public JwtResponse getToken(@RequestBody AuthRequest authRequest) {
         return authService.generateToken(authRequest);
     }
 
@@ -35,4 +38,9 @@ public class AuthController {
         authService.validateToken(token);
         return "Token is valid";
     } 
+
+    @GetMapping("/refreshToken")
+    public JwtResponse refreshToken(@RequestBody RefreshTokenRequest refreshTokenRequest) {
+        return authService.refreshToken(refreshTokenRequest);
+    }
 }

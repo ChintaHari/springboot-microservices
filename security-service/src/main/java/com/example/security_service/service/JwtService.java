@@ -6,8 +6,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -35,7 +33,7 @@ public class JwtService {
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new java.util.Date(System.currentTimeMillis()))
-                .setExpiration(new java.util.Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+                .setExpiration(new java.util.Date(System.currentTimeMillis() + 1000 * 60 * 20)) // 20 minutes   
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
