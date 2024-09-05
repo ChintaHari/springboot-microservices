@@ -18,6 +18,8 @@ This repository hosts a microservices architecture application designed to enhan
 - **Spring Cloud Config Server**: Manages shared configurations across multiple microservice environments from a central place.
 - **Spring Security 6**: Implements robust security using JWT for authentication and authorization processes.
 
+![Architecture](images/Architecture.jpg)
+
 ## Service Startup Order
 Ensure the services are started in the following order for proper registration and configuration:
 1. `SERVICE-REGISTRY`
@@ -63,7 +65,6 @@ To run the ELK stack, perform the following steps:
   ```
 
 ### 2. Get Token for Tarun
-![GetTokenForUserTarun](./GetTokenForUserTarun.png)
 - **Request**:
   ```http
   GET http://localhost:8080/auth/getToken
@@ -92,7 +93,6 @@ To run the ELK stack, perform the following steps:
   }
   ```
 ### 4. Create Book Order with Bearer Token
-![CreateBookOrderWithBearerToken](./CreateBookOrderWithBearerToken.png)
 - **Including Bearer Token**:
   To include the Bearer Token in your request, go to the Headers tab of your API tool (like Postman), select 'Authorization', choose 'Bearer Token', and paste the JWT token received from the previous step.
 
@@ -125,7 +125,6 @@ To run the ELK stack, perform the following steps:
   ```
 
 ### 5. Retrieve Payment Details with Bearer Token
-![GetPaymentDetailsWithOrderNumberUsingBearerToken](./GetPaymentDetailsWithOrderNumberUsingBearerToken.png)
 - **Including Bearer Token**:
   To include the Bearer Token in your request, go to the Headers tab of your API tool (like Postman), select 'Authorization', choose 'Bearer Token', and paste the JWT token received from the previous steps.
 
@@ -162,7 +161,6 @@ To run the ELK stack, perform the following steps:
     ```
 
 ### 6. Refresh Token
-![RefreshToken](./RefreshToken.png)
 - **Request**:
   ```http
   GET http://localhost:8080/auth/refreshToken
@@ -184,6 +182,6 @@ Tokens must be refreshed within their valid time frames; JWT tokens are valid fo
 ## Logging
 Once your services are running, you can monitor and view centralized logs in Kibana. Here's an example of how logs appear in the Kibana dashboard:
 
-![Logging](images/6.%20Logging.png)
+![Logging](images/6.%20Logging.jpg)
 
 
