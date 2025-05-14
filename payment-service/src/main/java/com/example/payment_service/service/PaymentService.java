@@ -1,5 +1,6 @@
 package com.example.payment_service.service;
 
+import java.security.SecureRandom;
 import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
@@ -33,7 +34,7 @@ public class PaymentService {
 
     public String paymentProcessing() {
         // api should be 3rd party payment gateway (paypal, paytm etc)
-        return new Random().nextBoolean() ? "success" : "false";
+        return new SecureRandom().nextBoolean() ? "success" : "false";
     }
 
     public Optional<Payment> getPaymentByOrderId(int orderId) {
